@@ -1,0 +1,242 @@
+.invalid-feedback {
+    display: block !important;
+}
+
+.btn-cordova {
+    background-color: #009b4c !important;
+    border-color: #009b4c !important;
+}
+
+.btn-sticky {
+    display: block;
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50px !important;
+    border: none;
+}
+
+.no-padding {
+    padding: unset !important;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.block-nav nav {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+@media (max-width: 767px) {
+    .block-nav nav {
+        -webkit-box-pack: start;
+        justify-content: flex-start;
+    }
+}
+
+.block-nav__box {
+    overflow: auto;
+}
+
+.block-login__container-box-image {
+    height: 180px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.block-login__container-box-image img {
+    width: 100%;
+    height: 100%;
+}
+
+.block-admin__card-body {
+    padding-bottom: unset !important;
+}
+
+.block-admin__card-body-title {
+    margin-bottom: 1em !important;
+}
+
+.block-admin__card-image {
+    width: auto;
+    height: 250px;
+    -o-object-fit: contain;
+    object-fit: contain;
+}
+
+.block-admin__card-footer-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.block-admin__card-footer-grid-item {
+    padding: 0 5px;
+    width: max-content;
+}
+
+.block-banner__card-body-title {
+    height: 54px;
+}
+
+.block-banner__card-body-subtitle {
+    height: 62px;
+}
+
+.block-banner__card-image {
+    width: auto;
+    height: 180px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-top-right-radius: 0.35rem;
+    border-top-left-radius: 0.35rem;
+}
+
+.block-banner__card-footer-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.block-banner__card-footer-grid-item {
+    padding: 0 5px;
+}
+
+.block-teacher__card-body {
+    padding-bottom: unset !important;
+}
+
+.block-teacher__card-body-title {
+    margin-bottom: 1em !important;
+}
+
+.block-teacher__card-image {
+    width: auto;
+    height: 250px;
+    -o-object-fit: contain;
+    object-fit: contain;
+}
+
+.block-teacher__card-footer-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.block-teacher__card-footer-grid-item {
+    padding: 0 5px;
+}
+
+.block-program__card-body-title {
+    height: 34px;
+}
+
+.block-program__card-body-subtitle {
+    height: 62px;
+}
+
+.block-program__card-image {
+    width: auto;
+    height: 250px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-top-right-radius: 0.35rem;
+    border-top-left-radius: 0.35rem;
+}
+
+.block-program__card-footer-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.block-program__card-footer-grid-item {
+    padding: 0 5px;
+}
+
+.block-event__card-body-title {
+    height: 34px;
+}
+
+.block-event__card-image {
+    width: auto;
+    height: 250px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-top-right-radius: 0.35rem;
+    border-top-left-radius: 0.35rem;
+}
+
+.block-event__card-footer-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.block-event__card-footer-grid-item {
+    padding: 0 5px;
+}
+
+.block-news__card-body-title {
+    height: 62px;
+}
+
+.block-news__card-body-subtitle {
+    height: 54px;
+}
+
+.block-news__card-image {
+    width: auto;
+    height: 250px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-top-right-radius: 0.35rem;
+    border-top-left-radius: 0.35rem;
+}
+
+.block-news__card-footer-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.block-news__card-footer-grid-item {
+    padding: 0 5px;
+}
+
+.block-gallery__card-body-quote {
+    height: 100px;
+}
+
+.block-gallery__card-image {
+    width: auto;
+    height: 250px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-top-right-radius: 0.35rem;
+    border-top-left-radius: 0.35rem;
+}
+
+.block-gallery__card-footer-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.block-gallery__card-footer-grid-item {
+    padding: 0 5px;
+}
+
+.auth__login-logo {
+    height: 180px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.auth__login-logo img {
+    height: 100%;
+    width: 100%;
+}
+
+.menu-item--active {
+    color: #fa626b !important;
+}

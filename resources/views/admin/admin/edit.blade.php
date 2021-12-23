@@ -64,6 +64,19 @@
                                         <input type="password" name="password_confirmation" class="form-control" placeholder="Password">
                                     </div>
                                     <div class="form-group">
+                                        <label>Role</label>
+                                        <select name="role" class="form-control @error('role') is-invalid @enderror">
+                                            <option value="1" @if($user->role == 1) selected @endif>Admin</option>
+                                            <option value="2" @if($user->role == 2) selected @endif>Koperasi</option>
+                                            <option value="3" @if($user->role == 3) selected @endif>Toko</option>
+                                        </select>
+                                        @error('role')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
                                         <label>Avatar</label>
                                         <br>
                                         <img src="{{ $user->avatar }}" class="img-fluid mb-1" alt="avatar">

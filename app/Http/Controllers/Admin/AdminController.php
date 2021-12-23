@@ -48,7 +48,7 @@ class AdminController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->password);
-        $user->role = 1;
+        $user->role = $request->input('role');
         $user->avatar = Uploader::store($request->file('avatar'), Admin::AVATAR_PATH_DIR);
 
         if ($user->save()) {
@@ -94,6 +94,7 @@ class AdminController extends Controller
         $user = Admin::findOrFail($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
+        $user->role = $request->input('role');
 
         if ($request->input('password')) {
             $user->password = Hash::make($request->password);

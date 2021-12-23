@@ -32,11 +32,19 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('dashboard', [DashboardController::class,  'index'])->name('admin.dashboard');
 
+<<<<<<< HEAD
         Route::resource('administrator', AdminController::class);
 
         Route::group(['prefix' => 'apps', 'as' => 'apps.'], function() {
             Route::resource('client', ClientController::class);
             Route::resource('product', ProductController::class);
+=======
+        Route::resource('administrator', AdminController::class)->middleware('admin-legitimate');
+
+        Route::group(['prefix' => 'apps', 'as' => 'apps.'], function() {
+            Route::resource('client', ClientController::class)->middleware('admin-koperasi');
+            Route::resource('product', ProductController::class)->middleware('admin-toko');
+>>>>>>> e43f983bab36e3e8f6952541fc64f2834944a3b8
         });
     });
 });

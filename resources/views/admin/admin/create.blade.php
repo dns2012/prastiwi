@@ -63,6 +63,19 @@
                                         <input type="password" name="password_confirmation" class="form-control" placeholder="Password" required>
                                     </div>
                                     <div class="form-group">
+                                        <label>Role</label>
+                                        <select name="role" class="form-control @error('role') is-invalid @enderror" required>
+                                            <option value="1">Admin</option>
+                                            <option value="2">Koperasi</option>
+                                            <option value="3">Toko</option>
+                                        </select>
+                                        @error('role')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
                                         <label>Avatar</label>
                                         <input type="file" name="avatar" class="form-control @error('avatar') is-invalid @enderror" required>
                                         @error('avatar')

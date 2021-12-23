@@ -12,28 +12,37 @@
         </ul>
     </div>
     <div class="main-menu-content">
+        @php $role = auth()->user()->role @endphp
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class="nav-item {{ strpos(Route::currentRouteName(), 'dashboard') === false ? '' : 'active' }}">
                 <a href="{{ route('admin.dashboard') }}">
                     <i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span>
                 </a>
             </li>
+            @if ($role == 1)
             <li class="nav-item {{ strpos(Route::currentRouteName(), 'administrator') === false ? '' : 'active' }}">
                 <a href="{{ route('administrator.index') }}">
                     <i class="ft-users"></i><span class="menu-title" data-i18n="">Admin</span>
                 </a>
             </li>
+            @endif
+
             <li class="nav-item has-sub {{ strpos(Route::currentRouteName(), 'apps') === false ? '' : 'open' }}">
                 <a href="javascript:void(0)">
                     <i class="ft-smartphone"></i><span class="menu-title" data-i18n="">Aplikasi</span>
                 </a>
                 <ul class="menu-content">
+                    @if ($role == 1 || $role == 2)
                     <li class="is-shown">
                         <a class="menu-item {{ strpos(Route::currentRouteName(), 'apps.client') === false ? '' : 'menu-item--active' }}" href="{{ route('apps.client.index') }}">Anggota</a>
                     </li>
+                    @endif
+
+                    @if ($role == 1 || $role == 3)
                     <li class="is-shown">
                         <a class="menu-item {{ strpos(Route::currentRouteName(), 'apps.product') === false ? '' : 'menu-item--active' }}" href="{{ route('apps.product.index') }}">Toko</a>
                     </li>
+                    @endif
                 </ul>
             </li>
             <!-- <li class="nav-item has-sub {{ strpos(Route::currentRouteName(), 'admin') === false ? '' : 'open' }}">

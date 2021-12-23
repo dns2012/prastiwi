@@ -34,7 +34,13 @@
                         <img class="block-admin__card-image" src="{{ $admin->avatar }}" alt="Card image">
                         <div class="card-body text-center">
                             <span class="badge badge-secondary">
-                                {{ ($admin->role == 1) ? 'administrator' : '' }}
+                                @if ($admin->role == 1)
+                                Administrator 
+                                @elseif ($admin->role == 2)
+                                Admin Koperasi
+                                @else 
+                                Admin Toko
+                                @endif
                             </span>
                         </div>
                         <div class="card-footer block-admin__card-footer border-top-blue-grey border-top-lighten-5 text-muted">

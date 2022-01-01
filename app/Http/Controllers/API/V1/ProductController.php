@@ -32,21 +32,12 @@ class ProductController extends BaseController
     /**
      * detail
      *
-<<<<<<< HEAD
-     * @param  Request $request
-     * @param  int $id
-=======
      * @param  mixed $request
      * @param  mixed $id
->>>>>>> e43f983bab36e3e8f6952541fc64f2834944a3b8
      * @return JsonResponse
      */
     public function detail(Request $request, int $id): JsonResponse
     {
-<<<<<<< HEAD
         return $this->success(Product::with('images')->findOrFail($id));
-=======
-        return $this->success(Product::with('images'))->findOrFail($id);
->>>>>>> e43f983bab36e3e8f6952541fc64f2834944a3b8
     }
 }

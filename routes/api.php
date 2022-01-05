@@ -38,6 +38,7 @@ Route::group(['prefix' => 'v1'], function() {
             Route::get('', [UserController::class, 'myProfile']);
             Route::get('saving', [UserController::class, 'mySaving']);
             Route::get('loan', [UserController::class, 'myLoan']);
+            Route::put('photo', [UserController::class, 'updatePhoto']);
         });
 
         Route::group(['prefix' => 'product'], function() {

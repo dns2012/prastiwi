@@ -12,6 +12,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public const IMAGE_PATH_DIR = 'user';
+
     /**
      * The attributes that are mass assignable.
      *

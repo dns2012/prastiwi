@@ -18,12 +18,13 @@ class ProductController extends BaseController
      */
     public function index(Request $request): JsonResponse
     {
-        $perPage = (! empty($request->query('per_page'))) ? $request->query('per_page') : 8;
-        $products = Product::with('images')->paginate($perPage);
+        $perPage = (! empty($request->query('per_page'))) ? $request->query('per_page') : 20;
+        $products = Product::with('images')->orderBy('id', 'DESC')->paginate($perPage);
         if (! empty($request->query('keyword'))) {
             $products = Product::with('images')
                                 ->where('name', 'like', "%{$request->query('keyword')}%")
                                 ->orWhere('description', 'like', "%{$request->query('keyword')}%")
+                                ->orderBy('id', 'DESC')
                                 ->paginate($perPage);
         }
         return $this->success($products);

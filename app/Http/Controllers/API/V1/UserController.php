@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API\V1;
 use App\Http\Controllers\API\BaseController;
 use App\Models\Loan;
 use App\Models\Saving;
+use App\Models\User;
+use App\Services\Uploader;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -46,5 +48,22 @@ class UserController extends BaseController
             $loans[$index]['debt'] = ($loan['loan_value'] + $loan['loan_interest']) - ($loan['loan_value_paid'] + $loan['loan_interest_paid']);
         }
         return $this->success($loans);
+    }
+    
+    /**
+     * updatePhoto
+     *
+     * @param  Request $request
+     * @return JsonResponse
+     */
+    public function updatePhoto(Request $request): JsonResponse
+    {
+        $request->validate(['avatar' => ['required', 'image', 'mimes:jpeg,jpg,png']]);
+        $user = auth()->user();
+        if ($request->file('avatar')) {
+            $user->avatar = Uploader::store($request->file('avatar'), User::IMAGE_PATH_DIR);
+            $user->save();
+        }
+        return $this->success($this->profile());
     }
 }

@@ -32,6 +32,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('dashboard', [DashboardController::class,  'index'])->name('admin.dashboard');
 
+        Route::get('user-generator', [DashboardController::class, 'userGenerator'])->name('admin.user.generator');
+
         Route::resource('administrator', AdminController::class)->middleware('admin-legitimate');
 
         Route::group(['prefix' => 'apps', 'as' => 'apps.'], function() {

@@ -16,6 +16,6 @@ class Client extends Model
      */
     public function account()
     {
-        return $this->hasOne(User::class, 'client_id', 'id');
+        return $this->hasOne(User::class, 'client_member_id', 'member_id');
     }
 }

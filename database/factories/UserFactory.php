@@ -16,8 +16,8 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'client_id' => 1,
-            'username' => 2001,
+            'client_member_id' => 2001,
+            'username' => 'prastiwi_2001',
             'password' => Hash::make('prastiwi')
         ];
     }

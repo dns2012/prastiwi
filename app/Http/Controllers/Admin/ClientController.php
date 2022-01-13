@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class ClientController extends Controller
 {
@@ -81,9 +83,11 @@ class ClientController extends Controller
     {
         $client = Client::findOrFail($id);
         if ($client->account) {
-            $client->account->delete();
+            $password = Str::random(8);
+            $client->account->password = Hash::make($password);
+            $client->account->save();
+            return redirect()->route('apps.client.index')->withErrors(['message' => "Password <b>{$client->name}</b> berhasil direset, password baru adalah : <b>{$password}</b>"]);
         }
-        return redirect()->route('apps.client.index')->withErrors(['message' => "Password {$client->name} berhasil direset!"]);
     }
 
     /**

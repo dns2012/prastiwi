@@ -20,10 +20,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'client_id',
+        'client_member_id',
         'username',
         'password',
-        'avatar'
+        'avatar',
+        'first_attempt'
     ];
 
     /**
@@ -42,6 +43,6 @@ class User extends Authenticatable
      */
     public function detail()
     {
-        return $this->hasOne(Client::class, 'id', 'client_id');
+        return $this->hasOne(Client::class, 'member_id', 'client_member_id');
     }
 }

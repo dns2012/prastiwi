@@ -30,7 +30,7 @@
                         <div class="card-body block-admin__card-body">
                             @error('message')
                                 <div class="alert alert-info" role="alert">
-                                    {{ $message }}
+                                    {!! $message !!}
                                 </div>
                             @enderror
                             <form method="GET">

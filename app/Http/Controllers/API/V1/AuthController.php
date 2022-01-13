@@ -24,19 +24,15 @@ class AuthController extends BaseController
             'username' => ['required', 'string'],
             'password' => ['required', 'string']
         ]);
-        $user = User::firstWhere('username', $request->input('username'));
+        $user   = User::firstWhere('username', $request->input('username'));
         if (! $user) {
-            $client = Client::firstWhere('member_id', $request->input('username'));
-            if (! $client) {
-                return $this->error(404, 'Anggota Tidak Terdaftar', 404);
-            }
-            if ($request->input('password') != "prastiwi{$request->input('username')}") {
-                return $this->error(401, 'Nomor Anggota / Password Salah', 401);
-            }
-            return $this->error(403, 'Ubah Password Default', 403);
+            return $this->error(404, 'Anggota Tidak Terdaftar', 404);
         }
         if (! auth()->attempt($request->input())) {
             return $this->error(401, 'Nomor Anggota / Password Salah', 401);
+        }
+        if (empty($user->first_attempt)) {
+            return $this->error(403, 'Ubah Password Default', 403);
         }
         $authenticated = $this->profile();
         $authenticated['metadata'] = [
@@ -59,18 +55,20 @@ class AuthController extends BaseController
             'password' => ['required', 'string']
         ]);
         $user = User::firstWhere('username', $request->input('username'));
-        if ($user) {
+        if (! $user) {
+            return $this->error(404, 'Anggota Tidak Terdaftar', 404);
+        }
+        if (! empty($user->first_attempt)) {
             return $this->error(403, 'Password Telah Diubah', 403);
         }
-        $client = Client::firstWhere('member_id', $request->input('username'));
+        $client = Client::firstWhere('member_id', $user->client_member_id);
         if (! $client) {
             return $this->error(404, 'Anggota Tidak Terdaftar', 404);
         }
-        $user = User::create([
-            'client_id' => $client->id,
-            'username'  => $client->member_id,
-            'password'  => Hash::make($request->input('password'))
-        ]);
+        $user->client_member_id = $client->member_id;
+        $user->password         = Hash::make($request->input('password'));
+        $user->first_attempt    = now();
+        $user->save();
         if (! auth()->attempt($request->input())) {
             return $this->error(401, 'Nomor Anggota / Password Salah', 401);
         }

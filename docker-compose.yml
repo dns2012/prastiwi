@@ -22,3 +22,8 @@ services:
             MYSQL_PASSWORD: secret
         volumes:
             - ./.docker/mysql:/var/lib/mysql
+    redis:
+        image: "redis:alpine"
+        command: redis-server
+        ports:
+        - "6379:6379"

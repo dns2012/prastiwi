@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -82,12 +83,18 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         $client = Client::findOrFail($id);
+        $password = Str::random(8);
         if ($client->account) {
-            $password = Str::random(8);
             $client->account->password = Hash::make($password);
             $client->account->save();
-            return redirect()->route('apps.client.index')->withErrors(['message' => "Password <b>{$client->name}</b> berhasil direset, password baru adalah : <b>{$password}</b>"]);
+        } else {
+            User::create([
+                'client_member_id'  => $client->member_id,
+                'username'          => "prastiwi_{$client->member_id}",
+                'password'          => Hash::make($password)
+            ]);
         }
+        return redirect()->route('apps.client.index')->withErrors(['message' => "Password <b>{$client->name}</b> berhasil direset, password baru adalah : <b>{$password}</b>"]);
     }
 
     /**

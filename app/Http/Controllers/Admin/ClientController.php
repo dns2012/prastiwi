@@ -86,6 +86,7 @@ class ClientController extends Controller
         $password = Str::random(8);
         if ($client->account) {
             $client->account->password = Hash::make($password);
+            $client->account->first_attempt = NULL;
             $client->account->save();
         } else {
             User::create([
